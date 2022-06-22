@@ -22,8 +22,6 @@ Output: [0]
 
 """
 
-from tkinter import N
-from tkinter.messagebox import NO
 
 
 class ListNode:
@@ -70,22 +68,42 @@ class ListNode:
 #     return head
 
 
-  def merge_two_lists_2(l1: ListNode, l2: ListNode) -> ListNode:
-     dummy = ListNode()
-     temp = dummy
+  # def merge_two_lists_2(l1: ListNode, l2: ListNode) -> ListNode:
+  #    dummy = ListNode()
+  #    temp = dummy
 
-     while l1 and l2:
-      if l1.val < l2.val:
-        temp.next = l1
-        l1 = l1.next
-      else:
-        temp.next = l2
-        l2 = l2.next
-      temp = temp.next
+  #    while l1 and l2:
+  #     if l1.val < l2.val:
+  #       temp.next = l1
+  #       l1 = l1.next
+  #     else:
+  #       temp.next = l2
+  #       l2 = l2.next
+  #     temp = temp.next
 
-    if l1:
-      tail.next = l1
-    elif l2:
-      tail.next = l2
+  #   if l1:
+  #     tail.next = l1
+  #   elif l2:
+  #     tail.next = l2
     
-    return dummy.next
+  #   return dummy.next
+
+  # Eddie's Solution
+  def mergeTwoLists(self, list1, list2):
+    temporary = None
+    if list1 == None:
+        return list2
+    
+    if list2 == None:
+        return list1
+    
+    if list1.val < list2.val:
+        temporary = list1
+        temporary.next = self.mergeTwoLists(list1.next, list2)
+    else:
+        temporary = list2
+        temporary.next = self.mergeTwoLists(list1, list2.next)
+        
+    return temporary
+
+  print([1,2,3,3], [2,2,3,4])

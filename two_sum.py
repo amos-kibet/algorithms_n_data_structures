@@ -4,6 +4,7 @@
 
 from re import T
 from matplotlib.pyplot import table
+from regex import I
 
 
 class Solution:
@@ -66,28 +67,44 @@ class Solution:
   # print(two_sum_4(nums, target))
 
   # Eddie's solution
-  def two_sum_5(nums, target):
-    """
-    :type nums: List[int]
-    :type target: int
-    :rtype: List[int]
-    """
-    for i in nums:
-      y=target-i # complements of target
+  # def two_sum_5(nums, target):
+  #   """
+  #   :type nums: List[int]
+  #   :type target: int
+  #   :rtype: List[int]
+  #   """
+  #   for i in nums:
+  #     y=target-i # complements of target
             
-      if y in nums and nums.index(i)!=nums.index(y):
-        return [nums.index(i),nums.index(y)]
-      elif y in nums and nums.index(i)==nums.index(y):
-        fake=nums.index(i)
-        nums[nums.index(i)]="a"
-        if y in nums:
-          return [fake,nums.index(y)]
-        else:
-          continue
-      else:
-        print("lacking")
+  #     if y in nums and nums.index(i)!=nums.index(y):
+  #       return [nums.index(i),nums.index(y)]
+  #     elif y in nums and nums.index(i)==nums.index(y):
+  #       fake=nums.index(i)
+  #       nums[nums.index(i)]="a"
+  #       if y in nums:
+  #         return [fake,nums.index(y)]
+  #       else:
+  #         continue
+  #     else:
+  #       print("lacking")
+
+  # nums = [3,3,4,5,6]
+  # target = 6
+  # print(two_sum_5(nums, target))
+  
+
+  # Trial Solution
+  def two_sum_5(nums, target):
+    dict = {}
+    for i in range(len(nums)-1):
+      complement = target -nums[i]
+      #print(complement)
+      if complement in dict:
+        return [dict[complement], i]
+      dict[i] = complement
+    return None
 
   nums = [3,3,4,5,6]
-  target = 5
+  target = 6
   print(two_sum_5(nums, target))
-  
+      

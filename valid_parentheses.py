@@ -68,42 +68,42 @@ class Solution:
 
 
     # Solution 3:
-    # def isValid(s):
-    #   if len(s) % 2 != 0:
-    #       return False
-    #   dict = {'(' : ')', '[' : ']', '{' : '}'}
-    #   stack = []
-    #   for i in s:
-    #     if i in dict.keys():
-    #       stack.append(i)
-    #     else:
-    #       if stack == []:
-    #         return False
-    #       a = stack.pop()
-    #       if i!= dict[a]:
-    #         return False
-    #   return stack == []
-
-    # print(isValid('((()))'))
-    # #print(isValid('([{[]})'))
-
-    # Solution 4:
     def isValid(s):
-      stack =[]
-      close_to_open = {")": "(", "}": "{", "]": "["}
-
-      for c in s:
-        if c in close_to_open:
-          if stack and stack[-1] == close_to_open[c]:
-            stack.pop()
-          else:
-            return False
+      if len(s) % 2 != 0:
+          return False
+      pair = {'(' : ')', '[' : ']', '{' : '}'}
+      stack = []
+      for i in s:
+        if i in pair.keys():
+          stack.append(i)
         else:
-          stack.append(c)
-      return True if not stack else False
+          if stack == []:
+            return False
+          a = stack.pop()
+          if i!= pair[a]:
+            return False
+      return stack == []
 
     print(isValid('((()))'))
-    print(isValid('({[]})'))
-    print(isValid('({[}]'))
+    print(isValid('([{[]}])'))
+
+    # Solution 4:
+    # def isValid(s):
+    #   stack =[]
+    #   close_to_open = {")": "(", "}": "{", "]": "["}
+
+    #   for c in s:
+    #     if c in close_to_open:
+    #       if stack and stack[-1] == close_to_open[c]:
+    #         stack.pop()
+    #       else:
+    #         return False
+    #     else:
+    #       stack.append(c)
+    #   return True if not stack else False
+
+    # print(isValid('((()))'))
+    # print(isValid('({[]})'))
+    # print(isValid('({[}]'))
   
 
