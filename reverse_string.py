@@ -19,10 +19,10 @@ class Solution:
         """
 
         # My first naive solution, swapping in-place: O(n) time & O(1) space
-        l, r = 0, len(s) - 1
-        while l < r:
-            s[l], s[r] = s[r], s[l]
-            l, r = l + 1, r - 1
+        # l, r = 0, len(s) - 1
+        # while l < r:
+        #     s[l], s[r] = s[r], s[l]
+        #     l, r = l + 1, r - 1
 
         # Using a stack: O(n) time & O(n) space. Works but does not meet requirements.
         # stack = []
@@ -43,5 +43,10 @@ class Solution:
 
         # Insanely short solution:
         # s.reverse()
+
+        l, r = 0, len(s) - 1
+        while l < r:
+            s[l], s[r] = s[r], s[l]
+            l, r = l + 1, r - 1
 
     print(reverse_string(["h", "e", "l", "l", "o"]))
